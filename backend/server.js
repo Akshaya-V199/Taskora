@@ -3,6 +3,8 @@ const dotenv=require("dotenv");
 const cors=require("cors");
 const connectDB=require("./config/db");
 
+const authRoutes=require("./routes/authRoutes");
+
 dotenv.config();
 
 const PORT=process.env.PORT || 5000;
@@ -14,6 +16,9 @@ app.use(cors());
 
 //connect mongodb
 connectDB();
+
+app.use("/api/auth",authRoutes);
+
 
 //test route
 app.get("/",(req,res)=>{
